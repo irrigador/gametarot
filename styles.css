@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+
+body {
+    font-family: Cinzel Decorative;
+}
+
+h1, h2 {
+    font-family: Almendra;
+}
+
+span {
+    font-family: Afacad Flux;
+}
+
+
+/* Estilo para a lista de itens */
+#itemList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px;
+}
+
+/* Estilo individual de cada item */
+#itemList li {
+    border: 1px solid #ddd;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.3s ease;
+    position: relative; /* Para o efeito de descrição */
+    overflow: hidden; /* Para evitar que a descrição transborde */
+}
+
+/* Efeito hover para melhor UX */
+#itemList li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+/* Estilo das imagens */
+#itemList li img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: opacity 0.3s ease; /* Transição de opacidade */
+}
+
+/* Estilo do resultado */
+#result {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.descricao {
+    
+    display: none; /* Mantém a descrição oculta na lista */
+    position: absolute;
+    top: 50%; /* Posiciona no centro */
+    left: 50%;
+    transform: translate(-50%, -50%) rotateY(0); /* Centraliza e não gira */
+    backface-visibility: hidden; /* Evita mostrar o verso */
+    z-index: 10; /* Para garantir que fique acima da imagem */
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
+    padding: 10px;
+    border-radius: 8px; /* Cantos arredondados para a descrição */
+    max-width: 100%; /* Limita a largura da descrição */
+    max-height: 100px; /* Altura máxima da descrição */
+    overflow: hidden; /* Esconde o overflow */
+}
+
+.show-descricao {
+    display: block; /* Mostra a descrição */
+    animation: rotate 0.5s forwards; /* Aplica a animação de rotação */
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotateY(-90deg); /* Gira a partir de -90 graus */
+    }
+    to {
+        transform: translate(-50%, -50%) rotateY(0); /* Finaliza na posição original */
+    }
+}
+
+/* Ajuste de botões */
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade para pequenas telas */
+@media (max-width: 600px) {
+    #itemList {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

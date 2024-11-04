@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista com 78 Itens e Seleção Aleatória</title>
+    <style>
+        /* Estilo para a lista de itens */
+        #itemList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            list-style-type: none;
+            padding: 0;
+            margin: 20px;
+        }
+        
+        /* Estilo individual de cada item */
+        #itemList li {
+            border: 1px solid #ddd;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative; /* Para o efeito de descrição */
+            overflow: hidden; /* Para evitar que a descrição transborde */
+        }
+        
+        /* Efeito hover para melhor UX */
+        #itemList li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Estilo das imagens */
+        #itemList li img {
+            max-width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            transition: opacity 0.3s ease; /* Transição de opacidade */
+        }
+
+        /* Estilo do resultado */
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .descricao {
+            display: none; /* Mantém a descrição oculta na lista */
+            position: absolute;
+            top: 50%; /* Posiciona no centro */
+            left: 50%;
+            transform: translate(-50%, -50%) rotateY(0); /* Centraliza e não gira */
+            backface-visibility: hidden; /* Evita mostrar o verso */
+            z-index: 10; /* Para garantir que fique acima da imagem */
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo semi-transparente */
+            padding: 10px;
+            border-radius: 8px; /* Cantos arredondados para a descrição */
+        }
+
+        .show-descricao {
+            display: block; /* Mostra a descrição */
+            animation: rotate 0.5s forwards; /* Aplica a animação de rotação */
+        }
+
+        @keyframes rotate {
+            from {
+                transform: translate(-50%, -50%) rotateY(-90deg); /* Gira a partir de -90 graus */
+            }
+            to {
+                transform: translate(-50%, -50%) rotateY(0); /* Finaliza na posição original */
+            }
+        }
+
+        /* Ajuste de botões */
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsividade para pequenas telas */
+        @media (max-width: 600px) {
+            #itemList {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            button {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <button onclick="selectRandomItems(3)">Selecionar 3 Itens Aleatórios</button>
+    <button onclick="selectRandomItems(5)">Selecionar 5 Itens Aleatórios</button>
+    <button onclick="selectRandomItems(7)">Selecionar 7 Itens Aleatórios</button>
+    <div id="result"></div>
+
+    <h1>Lista com 78 Itens</h1>
+    <ul id="itemList">
+        <li>
+            <img src="card1.png" alt="Imagem 1"/>
+            <p class="item-text">O Mago</p>
+            <span class="descricao">
+                O Mago: Esta carta representa o poder da manifestação e a habilidade de transformar ideias em realidade...
+            </span>
+        </li>
+        <li>
+            <img src="card2.png" alt="Imagem 2"/>
+            <p class="item-text">A Sacerdotisa</p>
+            <span class="descricao">
+                A Sacerdotisa: Esta carta simboliza a intuição, o mistério e o conhecimento profundo...
+            </span>
+        </li>
+        <li>
+            <img src="card3.png" alt="Imagem 3"/>
+            <p class="item-text">Item 3</p>
+            <span class="descricao">Descrição do Item 3</span>
+        </li>
+        <li>
+            <img src="card4.png" alt="Imagem 4"/>
+            <p class="item-text">Item 4</p>
+            <span class="descricao">Descrição do Item 4</span>
+        </li>
+        <li>
+            <img src="card5.png" alt="Imagem 5"/>
+            <p class="item-text">Item 5</p>
+            <span class="descricao">Descrição do Item 5</span>
+        </li>
+        <li>
+            <img src="card6.png" alt="Imagem 6"/>
+            <p class="item-text">Item 6</p>
+            <span class="descricao">Descrição do Item 6</span>
+        </li>
+        <li>
+            <img src="card7.png" alt="Imagem 7"/>
+            <p class="item-text">Item 7</p>
+            <span class="descricao">Descrição do Item 7</span>
+        </li>
+        <li>
+            <img src="card8.png" alt="Imagem 8"/>
+            <p class="item-text">Item 8</p>
+            <span class="descricao">Descrição do Item 8</span>
+        </li>
+        <li>
+            <img src="card9.png" alt="Imagem 9"/>
+            <p class="item-text">Item 9</p>
+            <span class="descricao">Descrição do Item 9</span>
+        </li>
+        <li>
+            <img src="card10.png" alt="Imagem 10"/>
+            <p class="item-text">Item 10</p>
+            <span class="descricao">Descrição do Item 10</span>
+        </li>
+    </ul>
+
+    <script>
+        function selectRandomItems(numItems) {
+            const items = document.querySelectorAll('#itemList li');
+            const selectedItems = [];
+            
+            while (selectedItems.length < numItems) {
+                const randomIndex = Math.floor(Math.random() * items.length);
+                const randomItem = items[randomIndex];
+                if (!selectedItems.includes(randomItem)) {
+                    selectedItems.push(randomItem);
+                }
+            }
+
+            // Montando o HTML de saída
+            let resultHTML = '<h2>Itens Selecionados:</h2><ul>';
+            selectedItems.forEach(item => {
+                const itemName = item.querySelector('.item-text').textContent.trim(); // Nome do item
+                const description = item.querySelector('.descricao').textContent.trim(); // Descrição
+                resultHTML += `<li>${itemName}<br>${description}</li>`;
+            });
+            resultHTML += '</ul>';
+            
+            // Atualizando o conteúdo do resultado
+            document.getElementById('result').innerHTML = resultHTML;
+        }
+
+        // jQuery para mostrar a descrição com efeito de girar
+        $(document).ready(function() {
+            $('#itemList li').hover(
+                function() {
+                    $(this).find('.descricao').addClass('show-descricao');
+                    $(this).find('img').css('opacity', '0.2'); // Reduz a opacidade da imagem
+                },
+                function() {
+                    $(this).find('.descricao').removeClass('show-descricao');
+                    $(this).find('img').css('opacity', '1'); // Restaura a opacidade da imagem
+                }
+            );
+        });
+    </script>
+    
+</body>
+</html>

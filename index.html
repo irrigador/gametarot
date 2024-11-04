@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartas tarot</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <button class="bubbly-button" onclick="selectRandomItems(3)">Situação geral (3 cartas)</button>
+    <button onclick="selectRandomItems(5)">Ação específica (5 cartas)</button>
+    <button onclick="selectRandomItems(7)">Perguntas diretas (7 cartas)</button>
+    <div id="result"></div>
+
+    <h1>Tarot Brocoli</h1>
+    <ul id="itemList">
+        <li>
+            <img src="card1.png" alt="O Mago"/>
+            <p class="item-text">O Mago</p>
+            <span class="descricao">
+                O Mago: Esta carta representa o poder da manifestação e a habilidade de transformar ideias em realidade. Com todos os elementos do Tarot em sua mesa, O Mago simboliza a confiança, a astúcia e a destreza. Ele é um mestre da comunicação e usa sua vontade e recursos para criar mudanças significativas. O Mago nos inspira a agir com determinação e a utilizar nossas habilidades para alcançar nossos objetivos. Quando aparece em uma leitura, sugere que o momento é propício para iniciar novos projetos e que você tem a capacidade de realizar seus sonhos. Além disso, ele representa a conexão entre o mundo material e o espiritual, mostrando que você possui todos os recursos necessários para alcançar o que deseja.
+            </span>
+        </li>
+        <li>
+            <img src="card2.png" alt="A Sacerdotisa"/>
+            <p class="item-text">A Sacerdotisa</p>
+            <span class="descricao">
+                A Sacerdotisa: Esta carta simboliza a intuição, o mistério e o conhecimento profundo. A Sacerdotisa é uma guardiã da sabedoria espiritual e representa o acesso a verdades ocultas e à sabedoria interior. Ela nos encoraja a confiar em nossa intuição e a explorar o inconsciente. Quando aparece em uma leitura, indica que é um momento de reflexão, introspecção e conexão com a espiritualidade. A Sacerdotisa convida você a olhar além das aparências e a buscar respostas dentro de si, revelando que o conhecimento mais profundo está à sua disposição. Ela também pode sugerir a importância de manter segredos e ter paciência ao lidar com situações complexas.
+            </span>
+        </li>
+        <li>
+            <img src="card3.png" alt="A Imperatriz"/>
+            <p class="item-text">A Imperatriz</p>
+            <span class="descricao">
+                A Imperatriz: Representa a fertilidade, a abundância e a nutrição. Ela simboliza a criação, a maternidade e a conexão com a natureza. Esta carta sugere um tempo de crescimento e prosperidade em sua vida, tanto no aspecto emocional quanto no material. A Imperatriz também é um símbolo de conforto, beleza e sensibilidade, mostrando que cuidar dos outros e de si mesmo é fundamental neste período. Quando aparece em uma leitura, é um convite para abraçar a criatividade e buscar harmonia nas relações, promovendo um ambiente de amor e carinho.
+            </span>
+        </li>
+        <li>
+            <img src="card4.png" alt="O Imperador"/>
+            <p class="item-text">O Imperador</p>
+            <span class="descricao">
+                O Imperador: Simboliza a autoridade, o controle e a estabilidade. Ele representa a liderança e a segurança. Esta carta sugere que você deve assumir o controle da situação e agir com determinação. O Imperador também pode representar uma figura paternal ou uma influência estruturadora em sua vida. Quando aparece em uma leitura, indica a necessidade de se estabelecer limites claros e de ter disciplina, além de encorajar a construção de um futuro sólido e seguro.
+            </span>
+        </li>
+        <li>
+            <img src="card5.png" alt="O Hierofante"/>
+            <p class="item-text">O Hierofante</p>
+            <span class="descricao">
+                O Hierofante: Representa a sabedoria tradicional e os valores espirituais. Ele sugere que você deve buscar orientação e seguir as convenções sociais. Esta carta é um símbolo de aprendizado e de busca por conhecimento em estruturas mais formais, como instituições e grupos. O Hierofante nos convida a explorar a espiritualidade dentro de um contexto comunitário, podendo também sugerir a necessidade de se conformar a normas sociais ou buscar a aprovação dos outros.
+            </span>
+        </li>
+        <li>
+            <img src="card6.png" alt="Os Amantes"/>
+            <p class="item-text">Os Amantes</p>
+            <span class="descricao">
+                Os Amantes: Simboliza o amor, a união e as escolhas. Esta carta sugere a importância dos relacionamentos e a necessidade de tomar decisões significativas. Os Amantes falam sobre a harmonia entre opostos e a busca pela conexão genuína com os outros. Quando aparece em uma leitura, pode indicar que você está em um ponto crucial em um relacionamento ou que precisa avaliar suas escolhas emocionais. Também pode representar a necessidade de alinhar seus valores e desejos com suas ações.
+            </span>
+        </li>
+        <li>
+            <img src="card7.png" alt="O Carro"/>
+            <p class="item-text">O Carro</p>
+            <span class="descricao">
+                O Carro: Representa a conquista e a determinação. Ele sugere que você está no caminho certo e que, com esforço, poderá alcançar seus objetivos. O Carro também simboliza controle e a capacidade de superar obstáculos, mostrando que a vitória é alcançada através da disciplina e da vontade. Quando aparece em uma leitura, é um sinal para manter o foco e avançar com confiança, mesmo diante de desafios.
+            </span>
+        </li>
+        <li>
+            <img src="card8.png" alt="A Força"/>
+            <p class="item-text">A Força</p>
+            <span class="descricao">
+                A Força: Simboliza a coragem, a compaixão e o autocontrole. Esta carta indica que você deve confiar em sua força interior para superar desafios. A Força também representa a dominação de instintos mais primitivos e a habilidade de lidar com a adversidade com amor e compreensão. Quando aparece em uma leitura, sugere que a verdadeira força vem de dentro e que a gentileza e a paciência podem levar a melhores resultados do que a força bruta.
+            </span>
+        </li>
+        <li>
+            <img src="card9.png" alt="O Eremita"/>
+            <p class="item-text">O Eremita</p>
+            <span class="descricao">
+                O Eremita: Representa a introspecção e a busca por conhecimento interior. Esta carta sugere que você deve buscar a solidão para encontrar a verdade. O Eremita simboliza um período de reflexão e avaliação, onde a sabedoria é adquirida através do isolamento e da contemplação. Quando aparece em uma leitura, indica que você pode precisar se afastar das distrações externas para se conectar com seu eu interior e encontrar clareza nas questões que está enfrentando.
+            </span>
+        </li>
+        <li>
+            <img src="card10.png" alt="A Roda da Fortuna"/>
+            <p class="item-text">A Roda da Fortuna</p>
+            <span class="descricao">
+                A Roda da Fortuna: Simboliza as mudanças e os ciclos da vida. Esta carta indica que a sorte pode mudar e que é importante se adaptar às circunstâncias. A Roda da Fortuna nos lembra que tudo é cíclico e que as coisas podem mudar rapidamente. Quando aparece em uma leitura, sugere que você deve estar aberto às transformações e pronto para aceitar o que a vida traz, sejam desafios ou oportunidades. Ela também representa o destino e a influência do tempo nas suas decisões.
+            </span>
+        </li>
+        <li>
+            <img src="card11.png" alt="A Justiça"/>
+            <p class="item-text">A Justiça</p>
+            <span class="descricao">
+                A Justiça: Representa a verdade, a equidade e a justiça. Esta carta sugere a importância de tomar decisões justas e de agir com integridade. A Justiça nos lembra que todas as ações têm consequências e que é essencial assumir a responsabilidade por elas. Quando aparece em uma leitura, indica que você deve avaliar sua situação com imparcialidade e honestidade, podendo também sugerir que questões legais ou éticas devem ser levadas em consideração.
+            </span>
+        </li>
+        <li>
+            <img src="card12.png" alt="O Enforcado"/>
+            <p class="item-text">O Enforcado</p>
+            <span class="descricao">
+                O Enforcado: Simboliza a entrega e a reflexão. Esta carta indica que pode ser necessário deixar de lado algo para ganhar uma nova perspectiva. O Enforcado sugere que a paciência e a aceitação são necessárias para resolver um problema ou situação. Quando aparece em uma leitura, é um lembrete de que às vezes é preciso se sacrificar ou fazer uma pausa para permitir que novas ideias ou soluções surjam.
+            </span>
+        </li>
+        <li>
+            <img src="card13.png" alt="A Morte"/>
+            <p class="item-text">A Morte</p>
+            <span class="descricao">
+                A Morte: Representa o fim de um ciclo e a transformação. Esta carta sugere que mudanças significativas estão a caminho e que é hora de deixar o passado para trás. A Morte não deve ser temida; ao invés disso, ela simboliza a possibilidade de renascimento e renovação. Quando aparece em uma leitura, é um sinal para aceitar o que deve ser deixado para trás e estar aberto para novas oportunidades e recomeços.
+            </span>
+        </li>
+        <li>
+            <img src="card14.png" alt="A Temperança"/>
+            <p class="item-text">A Temperança</p>
+            <span class="descricao">
+                A Temperança: Simboliza o equilíbrio e a harmonia. Esta carta sugere a importância de encontrar um meio-termo e de ter paciência nas situações. A Temperança fala sobre a necessidade de unir diferentes aspectos da vida para criar algo novo e harmonioso. Quando aparece em uma leitura, indica que é um momento favorável para a moderação e para buscar soluções criativas, além de sugerir que a paz interior pode ser alcançada através da colaboração e do entendimento.
+            </span>
+        </li>
+        <li>
+            <img src="card15.png" alt="O Diabo"/>
+            <p class="item-text">O Diabo</p>
+            <span class="descricao">
+                O Diabo: Representa as tentações e as limitações. Esta carta sugere a necessidade de enfrentar os medos e as dependências que nos prendem. O Diabo fala sobre as armadilhas que podem nos impedir de viver a vida plenamente, como vícios, ilusões ou relacionamentos tóxicos. Quando aparece em uma leitura, indica que é hora de examinar suas limitações e buscar libertação. É um convite para confrontar os aspectos mais sombrios de si mesmo e encontrar um caminho para a cura e o autoconhecimento.
+            </span>
+        </li>
+        <li>
+            <img src="card16.png" alt="A Torre"/>
+            <p class="item-text">A Torre</p>
+            <span class="descricao">
+                A Torre: Simboliza a ruptura e a revelação. Esta carta indica que mudanças inesperadas podem ocorrer, levando a uma nova compreensão. A Torre representa a destruição de estruturas antigas e a necessidade de confrontar verdades difíceis. Quando aparece em uma leitura, sugere que você pode estar passando por um período de turbulência que, embora desafiador, pode abrir espaço para novas oportunidades e crescimento. É um convite para deixar de lado o que não serve mais e acolher a transformação.
+            </span>
+        </li>
+        <li>
+            <img src="card17.png" alt="A Estrela"/>
+            <p class="item-text">A Estrela</p>
+            <span class="descricao">
+                A Estrela: Representa a esperança e a inspiração. Esta carta sugere que é hora de acreditar em seus sonhos e de seguir seu coração. A Estrela simboliza um período de paz e serenidade, onde a cura e a renovação são possíveis. Quando aparece em uma leitura, indica que a fé e a confiança em si mesmo são fundamentais para superar desafios e que você deve se abrir para novas possibilidades. A Estrela também é um sinal de que o futuro é promissor e que o que você deseja pode se tornar realidade.
+            </span>
+        </li>
+        <li>
+            <img src="card18.png" alt="A Lua"/>
+            <p class="item-text">A Lua</p>
+            <span class="descricao">
+                A Lua: Simboliza a ilusão e a intuição. Esta carta sugere a necessidade de confiar em sua intuição e de estar atento às influências externas. A Lua fala sobre o inconsciente, os sonhos e as emoções, indicando que nem tudo é o que parece. Quando aparece em uma leitura, é um convite para explorar o mundo dos sonhos e do instinto, além de sugerir que você deve ser cauteloso em relação a enganos ou ilusões. A Lua também pode indicar a necessidade de olhar para dentro e enfrentar os medos que podem estar ocultos.
+            </span>
+        </li>
+        <li>
+            <img src="card19.png" alt="O Sol"/>
+            <p class="item-text">O Sol</p>
+            <span class="descricao">
+                O Sol: Representa a felicidade e a realização. Esta carta sugere que tempos felizes e de sucesso estão à frente. O Sol simboliza a clareza, a vitalidade e a energia positiva, trazendo luz e otimismo para qualquer situação. Quando aparece em uma leitura, é um sinal de que suas ações estão sendo reconhecidas e que você está em sintonia com a alegria e o amor. O Sol também indica que a transparência e a autenticidade são fundamentais para alcançar seus objetivos.
+            </span>
+        </li>
+        <li>
+            <img src="card20.png" alt="O Julgamento"/>
+            <p class="item-text">O Julgamento</p>
+            <span class="descricao">
+                O Julgamento: Simboliza o renascimento e a avaliação. Esta carta sugere a necessidade de refletir sobre suas ações e buscar a verdade interior. O Julgamento representa um chamado para acordar e avaliar sua vida, reconhecendo onde você precisa mudar ou fazer melhorias. Quando aparece em uma leitura, indica que é hora de tomar responsabilidade por suas escolhas e que a transformação é possível, através da aceitação e do perdão. É um convite para se libertar do passado e avançar em direção ao futuro com uma nova perspectiva.
+            </span>
+        </li>
+        <li>
+            <img src="card21.png" alt="O Mundo"/>
+            <p class="item-text">O Mundo</p>
+            <span class="descricao">
+                O Mundo: Representa a conclusão e a realização. Esta carta sugere que você está alcançando seus objetivos e completando um ciclo em sua vida. O Mundo simboliza a plenitude e a harmonia, indicando que você pode estar em um momento de celebração e alegria. Quando aparece em uma leitura, é um sinal de que todo o trabalho duro valeu a pena e que você pode finalmente colher os frutos de seus esforços. O Mundo também sugere que você deve estar aberto a novas experiências e expansões, permitindo-se crescer ainda mais.
+            </span>
+        </li>
+        <li>
+            <img src="card22.png" alt="O Louco"/>
+            <p class="item-text">O Louco</p>
+            <span class="descricao">
+                O Louco: Representa novos começos, liberdade e aventura. Esta carta sugere que você deve seguir seu coração e não ter medo de arriscar. O Louco simboliza a espontaneidade e a liberdade de se expressar sem limitações. Quando aparece em uma leitura, é um convite para abraçar o desconhecido e confiar no processo da vida. O Louco nos lembra que a vida é uma jornada cheia de possibilidades, e é importante estar aberto a novas experiências.
+            </span>
+        </li>
+        <li>
+            <img src="card23.png" alt="A Papisa"/>
+            <p class="item-text">A Papisa</p>
+            <span class="descricao">
+                A Papisa: Representa o conhecimento e a sabedoria interior. Esta carta sugere a importância da intuição e da percepção. A Papisa é um símbolo de compreensão e insight, indicando que você deve olhar para dentro de si mesmo para encontrar as respostas que procura. Quando aparece em uma leitura, sugere que o conhecimento mais profundo pode ser acessado através da meditação e da reflexão. A Papisa também pode representar o feminino sagrado e o poder da criação.
+            </span>
+        </li>
+        <li>
+            <img src="card24.png" alt="O Rei de Copas"/>
+            <p class="item-text">O Rei de Copas</p>
+            <span class="descricao">
+                O Rei de Copas: Simboliza a compaixão e a compreensão emocional. Esta carta sugere que você deve agir com empatia e abertura emocional. O Rei de Copas representa a maturidade emocional e a habilidade de se conectar com os outros de forma profunda. Quando aparece em uma leitura, é um sinal de que você deve confiar em seus sentimentos e usar sua intuição para guiar suas ações. O Rei de Copas também é um símbolo de cura e proteção emocional.
+            </span>
+        </li>
+        <li>
+            <img src="card25.png" alt="A Rainha de Copas"/>
+            <p class="item-text">A Rainha de Copas</p>
+            <span class="descricao">
+                A Rainha de Copas: Representa o amor, a intuição e a nutrição. Esta carta sugere que você deve se permitir sentir e expressar suas emoções. A Rainha de Copas simboliza a capacidade de cuidar dos outros e de ser empática. Quando aparece em uma leitura, indica que você deve se abrir para suas emoções e permitir que sua intuição guie suas decisões. A Rainha de Copas também pode representar uma figura materna em sua vida ou o desejo de cuidar e proteger aqueles que você ama.
+            </span>
+        </li>
+        <li>
+            <img src="card26.png" alt="O Valete de Copas"/>
+            <p class="item-text">O Valete de Copas</p>
+            <span class="descricao">
+                O Valete de Copas: Simboliza novos começos emocionais e a busca por amor e alegria. Esta carta sugere que você deve seguir seu coração e explorar suas emoções. O Valete de Copas representa a curiosidade e a juventude, indicando que você deve estar aberto a novas experiências emocionais. Quando aparece em uma leitura, é um convite para se permitir sonhar e acreditar que o amor e a felicidade estão ao seu alcance. O Valete de Copas também pode simbolizar uma mensagem de amor ou uma nova oportunidade emocional.
+            </span>
+        </li>
+        <li>
+            <img src="card27.png" alt="O 10 de Copas"/>
+            <p class="item-text">O 10 de Copas</p>
+            <span class="descricao">
+                O 10 de Copas: Representa a felicidade emocional e a realização familiar. Esta carta sugere que você está alcançando um estado de harmonia e alegria em seus relacionamentos. O 10 de Copas simboliza a satisfação e a plenitude emocional, indicando que seus laços afetivos estão fortes e saudáveis. Quando aparece em uma leitura, é um sinal de que você pode encontrar felicidade em sua vida familiar e que seus desejos emocionais estão se realizando. Esta carta também pode indicar a necessidade de valorizar os momentos felizes ao lado de seus entes queridos.
+            </span>
+        </li>
+        <li>
+            <img src="card28.png" alt="O 9 de Copas"/>
+            <p class="item-text">O 9 de Copas</p>
+            <span class="descricao">
+                O 9 de Copas: Simboliza a satisfação e a realização de desejos. Esta carta sugere que você está alcançando seus objetivos e que suas esperanças estão se concretizando. O 9 de Copas representa um tempo de contentamento e alegria, indicando que você deve celebrar suas conquistas. Quando aparece em uma leitura, é um sinal de que seus desejos mais profundos estão se manifestando e que a gratidão é importante neste momento. Esta carta também pode indicar que você deve ser grato pelas bênçãos que já possui em sua vida.
+            </span>
+        </li>
+        <li>
+            <img src="card29.png" alt="O 8 de Copas"/>
+            <p class="item-text">O 8 de Copas</p>
+            <span class="descricao">
+                O 8 de Copas: Representa a necessidade de se afastar e buscar novos caminhos. Esta carta sugere que você pode estar insatisfeito com sua situação atual e que é hora de buscar algo mais significativo. O 8 de Copas simboliza a busca por propósito e autoconhecimento, indicando que você deve estar disposto a deixar para trás o que não mais serve. Quando aparece em uma leitura, é um convite para explorar novas oportunidades e seguir sua intuição em busca de uma vida mais gratificante. Essa carta também pode sugerir que você precisa se desconectar de relacionamentos ou situações que não são saudáveis.
+            </span>
+        </li>
+        <li>
+            <img src="card30.png" alt="O 7 de Copas"/>
+            <p class="item-text">O 7 de Copas</p>
+            <span class="descricao">
+                O 7 de Copas: Simboliza as escolhas e as ilusões. Esta carta sugere que você pode estar enfrentando muitas opções e que é importante discernir entre o que é real e o que é apenas uma fantasia. O 7 de Copas representa as tentações e os sonhos, indicando que você deve estar atento para não se perder em ilusões. Quando aparece em uma leitura, é um convite para examinar suas opções com clareza e não se deixar enganar por promessas vazias. Essa carta também pode indicar que é hora de se concentrar em seus verdadeiros desejos e aspirações.
+            </span>
+        </li>
+        <li>
+            <img src="card31.png" alt="O 6 de Copas"/>
+            <p class="item-text">O 6 de Copas</p>
+            <span class="descricao">
+                O 6 de Copas: Representa a nostalgia e as memórias. Esta carta sugere que você deve valorizar o passado e as experiências que moldaram quem você é. O 6 de Copas simboliza a inocência e a alegria da infância, indicando que momentos felizes podem ser revisitados. Quando aparece em uma leitura, é um sinal de que você deve olhar para suas raízes e permitir que as lições do passado ajudem a moldar seu futuro. Essa carta também pode indicar o retorno de pessoas do passado ou a necessidade de curar feridas emocionais antigas.
+            </span>
+        </li>
+        <li>
+            <img src="card32.png" alt="O 5 de Copas"/>
+            <p class="item-text">O 5 de Copas</p>
+            <span class="descricao">
+                O 5 de Copas: Simboliza a perda e o arrependimento. Esta carta sugere que você pode estar se concentrando no que perdeu, em vez de valorizar o que ainda possui. O 5 de Copas representa a tristeza e a desilusão, indicando que é hora de enfrentar suas emoções e permitir-se sentir a dor. Quando aparece em uma leitura, é um convite para deixar o passado para trás e se abrir para novas oportunidades. Essa carta também pode sugerir que, mesmo em momentos difíceis, é importante manter a esperança e lembrar que ainda existem bênçãos em sua vida.
+            </span>
+        </li>
+        <li>
+            <img src="card33.png" alt="O 4 de Copas"/>
+            <p class="item-text">O 4 de Copas</p>
+            <span class="descricao">
+                O 4 de Copas: Representa a apatia e o tédio. Esta carta sugere que você pode estar se sentindo insatisfeito com sua situação atual e que é hora de reavaliar suas prioridades. O 4 de Copas simboliza a necessidade de introspecção e autoavaliação, indicando que você deve se permitir fazer uma pausa e refletir sobre o que realmente deseja. Quando aparece em uma leitura, é um convite para não se deixar levar pela monotonia e buscar novas maneiras de se conectar com suas emoções. Essa carta também pode indicar que novas oportunidades estão se aproximando, mas você precisa estar disposto a reconhecê-las.
+            </span>
+        </li>
+        <li>
+            <img src="card34.png" alt="O 3 de Copas"/>
+            <p class="item-text">O 3 de Copas</p>
+            <span class="descricao">
+                O 3 de Copas: Simboliza a celebração e a amizade. Esta carta sugere que você deve valorizar os momentos felizes ao lado de amigos e familiares. O 3 de Copas representa a alegria e a camaradagem, indicando que a colaboração e o apoio mútuo são essenciais em sua vida. Quando aparece em uma leitura, é um sinal de que é hora de celebrar suas conquistas e compartilhar a felicidade com aqueles que você ama. Essa carta também pode indicar o início de novos relacionamentos ou uma maior conexão com sua comunidade.
+            </span>
+        </li>
+        <li>
+            <img src="card35.png" alt="O 2 de Copas"/>
+            <p class="item-text">O 2 de Copas</p>
+            <span class="descricao">
+                O 2 de Copas: Representa a união e a parceria. Esta carta sugere que você deve valorizar os relacionamentos e as conexões emocionais em sua vida. O 2 de Copas simboliza a harmonia e a reciprocidade, indicando que a comunicação aberta é essencial para o sucesso de suas interações. Quando aparece em uma leitura, é um convite para se abrir para o amor e a amizade, reconhecendo que as parcerias saudáveis são fundamentais para seu crescimento emocional. Essa carta também pode indicar um novo relacionamento romântico ou uma reconciliação em um relacionamento existente.
+            </span>
+        </li>
+        <li>
+            <img src="card36.png" alt="O Ás de Copas"/>
+            <p class="item-text">O Ás de Copas</p>
+            <span class="descricao">
+                O Ás de Copas: Simboliza novas oportunidades emocionais e o florescimento do amor. Esta carta sugere que você está prestes a experimentar um novo nível de conexão emocional. O Ás de Copas representa a fertilidade emocional e a abertura para o amor, indicando que é um momento propício para novos começos. Quando aparece em uma leitura, é um convite para se abrir para o amor e permitir que suas emoções fluam livremente. Essa carta também pode indicar a necessidade de cuidar de si mesmo e nutrir seu próprio bem-estar emocional.
+            </span>
+        </li>
+        <li>
+            <img src="card37.png" alt="O Rei de Espadas"/>
+            <p class="item-text">O Rei de Espadas</p>
+            <span class="descricao">
+                O Rei de Espadas: Representa a clareza mental e a autoridade. Esta carta sugere que você deve agir com lógica e discernimento em suas decisões. O Rei de Espadas simboliza a capacidade de ver a verdade e comunicar-se com honestidade, indicando que você deve usar sua mente analítica para resolver problemas. Quando aparece em uma leitura, é um convite para ser firme e direto em suas comunicações, reconhecendo que a sabedoria e a razão são essenciais para alcançar seus objetivos. Essa carta também pode indicar a necessidade de se proteger de influências negativas e de agir com integridade.
+            </span>
+        </li>
+        <li>
+            <img src="card38.png" alt="A Rainha de Espadas"/>
+            <p class="item-text">A Rainha de Espadas</p>
+            <span class="descricao">
+                A Rainha de Espadas: Simboliza a independência e a inteligência. Esta carta sugere que você deve ser honesta consigo mesma e com os outros. A Rainha de Espadas representa a capacidade de ver as coisas claramente e de tomar decisões com base na lógica e na razão. Quando aparece em uma leitura, é um convite para se abrir para a verdade e deixar de lado o que não serve mais. Essa carta também pode indicar que é hora de se libertar de relacionamentos ou situações tóxicas e buscar a autenticidade em sua vida.
+            </span>
+        </li>
+        <li>
+            <img src="card39.png" alt="O Valete de Espadas"/>
+            <p class="item-text">O Valete de Espadas</p>
+            <span class="descricao">
+                O Valete de Espadas: Representa a curiosidade e a busca pela verdade. Esta carta sugere que você deve estar aberto a aprender e a questionar o que não entende. O Valete de Espadas simboliza a comunicação e a exploração, indicando que você deve se permitir investigar novas ideias e perspectivas. Quando aparece em uma leitura, é um convite para abraçar a curiosidade e buscar conhecimento em áreas que você não conhece. Essa carta também pode indicar a necessidade de se proteger contra mal-entendidos e conflitos.
+            </span>
+        </li>
+        <li>
+            <img src="card40.png" alt="O 10 de Espadas"/>
+            <p class="item-text">O 10 de Espadas</p>
+            <span class="descricao">
+                O 10 de Espadas: Simboliza a traição e o fim de um ciclo. Esta carta sugere que você pode estar enfrentando um momento difícil e que é hora de deixar o que não serve mais. O 10 de Espadas representa a dor e a desilusão, indicando que a superação é essencial para o crescimento. Quando aparece em uma leitura, é um convite para reconhecer a situação e se permitir seguir em frente. Essa carta também pode sugerir que, mesmo nas situações mais sombrias, há uma oportunidade de renascimento e transformação.
+            </span>
+        </li>
+        <li>
+            <img src="card41.png" alt="O 9 de Espadas"/>
+            <p class="item-text">O 9 de Espadas</p>
+            <span class="descricao">
+                O 9 de Espadas: Representa a ansiedade e o medo. Esta carta sugere que você pode estar enfrentando preocupações que o mantêm acordado à noite. O 9 de Espadas simboliza a necessidade de enfrentar os medos e a dor emocional, indicando que é hora de buscar apoio e compreensão. Quando aparece em uma leitura, é um convite para enfrentar suas preocupações e permitir-se sentir as emoções. Essa carta também pode indicar que é necessário cuidar da sua saúde mental e buscar maneiras de lidar com a ansiedade.
+            </span>
+        </li>
+        <li>
+            <img src="card42.png" alt="O 8 de Espadas"/>
+            <p class="item-text">O 8 de Espadas</p>
+            <span class="descricao">
+                O 8 de Espadas: Simboliza a limitação e a paralisia. Esta carta sugere que você pode estar se sentindo preso em uma situação e que é hora de encontrar uma saída. O 8 de Espadas representa a auto-imposição e a necessidade de ver as coisas de forma diferente. Quando aparece em uma leitura, é um convite para desafiar suas crenças limitantes e buscar a verdade em sua vida. Essa carta também pode indicar que, mesmo quando parece não haver opções, é importante reconhecer que a liberdade está ao seu alcance.
+            </span>
+        </li>
+        <li>
+            <img src="card43.png" alt="O 7 de Espadas"/>
+            <p class="item-text">O 7 de Espadas</p>
+            <span class="descricao">
+                O 7 de Espadas: Representa a astúcia e a estratégia. Esta carta sugere que você deve ser cauteloso em suas interações e buscar soluções criativas para os desafios. O 7 de Espadas simboliza a necessidade de agir com sabedoria e discernimento, indicando que é hora de pensar fora da caixa. Quando aparece em uma leitura, é um convite para usar sua inteligência para superar obstáculos e alcançar seus objetivos. Essa carta também pode indicar que é importante ser honesto consigo mesmo e com os outros.
+            </span>
+        </li>
+        <li>
+            <img src="card44.png" alt="O 6 de Espadas"/>
+            <p class="item-text">O 6 de Espadas</p>
+            <span class="item-text">O 6 de Espadas</p>
+            <span class="descricao">
+                O 6 de Espadas: Simboliza a transição e a mudança. Esta carta sugere que você pode estar passando por uma fase de transformação e que é hora de deixar o passado para trás. O 6 de Espadas representa a jornada em direção a um futuro mais promissor, indicando que você deve estar disposto a se mover para novas oportunidades. Quando aparece em uma leitura, é um convite para aceitar a mudança e confiar no processo. Essa carta também pode indicar que a cura está a caminho e que você está se afastando de situações difíceis.
+            </span>
+        </li>
+        <li>
+            <img src="card45.png" alt="O 5 de Espadas"/>
+            <p class="item-text">O 5 de Espadas</p>
+            <span class="descricao">
+                O 5 de Espadas: Representa a vitória e o conflito. Esta carta sugere que você pode estar enfrentando desafios e que a competição é intensa. O 5 de Espadas simboliza a luta e a necessidade de ser cuidadoso em suas interações. Quando aparece em uma leitura, é um convite para examinar suas motivações e considerar as consequências de suas ações. Essa carta também pode indicar que, mesmo em situações de conflito, é importante buscar a paz e a harmonia.
+            </span>
+        </li>
+        <li>
+            <img src="card46.png" alt="O 4 de Espadas"/>
+            <p class="item-text">O 4 de Espadas</p>
+            <span class="descricao">
+                O 4 de Espadas: Simboliza a recuperação e o descanso. Esta carta sugere que você deve tirar um tempo para se recuperar e refletir. O 4 de Espadas representa a necessidade de introspecção e autoavaliação, indicando que é hora de descansar e recarregar as energias. Quando aparece em uma leitura, é um convite para cuidar de si mesmo e priorizar o seu bem-estar. Essa carta também pode indicar que, mesmo nas situações mais desafiadoras, o descanso é essencial para encontrar clareza e força.
+            </span>
+        </li>
+        <li>
+            <img src="card47.png" alt="O 3 de Espadas"/>
+            <p class="item-text">O 3 de Espadas</p>
+            <span class="descricao">
+                O 3 de Espadas: Representa a dor e a traição. Esta carta sugere que você pode estar passando por um momento difícil e que a cura é necessária. O 3 de Espadas simboliza a necessidade de lidar com a dor emocional e as desilusões. Quando aparece em uma leitura, é um convite para permitir-se sentir as emoções e buscar o apoio de outros. Essa carta também pode indicar que, mesmo nas situações mais dolorosas, é possível encontrar crescimento e aprendizado.
+            </span>
+        </li>
+        <li>
+            <img src="card48.png" alt="O 2 de Espadas"/>
+            <p class="item-text">O 2 de Espadas</p>
+            <span class="descricao">
+                O 2 de Espadas: Simboliza a indecisão e o impasse. Esta carta sugere que você pode estar enfrentando uma escolha difícil e que é hora de buscar clareza. O 2 de Espadas representa a necessidade de confrontar suas emoções e encontrar um caminho a seguir. Quando aparece em uma leitura, é um convite para examinar suas opções com cuidado e não se deixar levar pela confusão. Essa carta também pode indicar que a comunicação aberta é essencial para resolver conflitos e encontrar soluções.
+            </span>
+        </li>
+        <li>
+            <img src="card49.png" alt="O Ás de Espadas"/>
+            <p class="item-text">O Ás de Espadas</p>
+            <span class="descricao">
+                O Ás de Espadas: Representa a verdade e a clareza mental. Esta carta sugere que você deve buscar a verdade em sua vida e agir com integridade. O Ás de Espadas simboliza novos começos intelectuais e a capacidade de ver as coisas com clareza. Quando aparece em uma leitura, é um convite para se abrir para a sabedoria e usar sua mente para resolver problemas. Essa carta também pode indicar que, mesmo em momentos difíceis, a verdade é a chave para a liberdade e o crescimento.
+            </span>
+        </li>
+        <li>
+            <img src="card50.png" alt="O Rei de Ouros"/>
+            <p class="item-text">O Rei de Ouros</p>
+            <span class="descricao">
+                O Rei de Ouros: Simboliza o sucesso material e a segurança. Esta carta sugere que você deve agir com responsabilidade e sabedoria em relação a suas finanças. O Rei de Ouros representa a prosperidade e a estabilidade, indicando que você está em um momento de realização. Quando aparece em uma leitura, é um convite para valorizar o que possui e usar seus recursos com inteligência. Essa carta também pode indicar que você deve estar aberto a novas oportunidades de crescimento financeiro.
+            </span>
+        </li>
+        <li>
+            <img src="card51.png" alt="A Rainha de Ouros"/>
+            <p class="item-text">A Rainha de Ouros</p>
+            <span class="descricao">
+                A Rainha de Ouros: Representa a nutrição e a prosperidade. Esta carta sugere que você deve cuidar de si mesmo e dos outros ao seu redor. A Rainha de Ouros simboliza a estabilidade e o conforto, indicando que você pode estar em um momento de abundância. Quando aparece em uma leitura, é um convite para se conectar com sua intuição e valorizar o que realmente importa. Essa carta também pode indicar que você deve usar seus recursos para ajudar os outros e criar um ambiente acolhedor.
+            </span>
+        </li>
+        <li>
+            <img src="card52.png" alt="O Valete de Ouros"/>
+            <p class="item-text">O Valete de Ouros</p>
+            <span class="descricao">
+                O Valete de Ouros: Simboliza a oportunidade e o potencial. Esta carta sugere que você deve estar aberto a novas experiências e aprendizados. O Valete de Ouros representa a ambição e a determinação, indicando que você está em um momento de crescimento pessoal. Quando aparece em uma leitura, é um convite para se comprometer com seus objetivos e trabalhar duro para alcançá-los. Essa carta também pode indicar que novas oportunidades de carreira ou aprendizado estão se aproximando.
+            </span>
+        </li>
+        <li>
+            <img src="card53.png" alt="O 10 de Ouros"/>
+            <p class="item-text">O 10 de Ouros</p>
+            <span class="descricao">
+                O 10 de Ouros: Representa a riqueza e a herança. Esta carta sugere que você pode estar alcançando um estado de segurança financeira e estabilidade em sua vida. O 10 de Ouros simboliza a realização e a prosperidade, indicando que seus esforços estão valendo a pena. Quando aparece em uma leitura, é um convite para valorizar suas conquistas e compartilhar sua abundância com os outros. Essa carta também pode indicar que você deve estar preparado para transmitir suas lições e sabedoria para as futuras gerações.
+            </span>
+        </li>
+        <li>
+            <img src="card54.png" alt="O 9 de Ouros"/>
+            <p class="item-text">O 9 de Ouros</p>
+            <span class="descricao">
+                O 9 de Ouros: Simboliza o sucesso e a autossuficiência. Esta carta sugere que você deve valorizar suas conquistas e o trabalho duro que realizou. O 9 de Ouros representa a recompensa e a gratidão, indicando que você pode estar em um momento de realização pessoal. Quando aparece em uma leitura, é um convite para reconhecer seu valor e o que você trouxe para sua vida. Essa carta também pode indicar que é hora de desfrutar dos frutos do seu trabalho e se permitir relaxar.
+            </span>
+        </li>
+        <li>
+            <img src="card55.png" alt="O 8 de Ouros"/>
+            <p class="item-text">O 8 de Ouros</p>
+            <span class="descricao">
+                O 8 de Ouros: Representa o trabalho duro e a dedicação. Esta carta sugere que você deve se concentrar em seus objetivos e investir tempo e esforço em seu desenvolvimento pessoal. O 8 de Ouros simboliza a aprendizagem e a maestria, indicando que você pode estar em um momento de crescimento profissional. Quando aparece em uma leitura, é um convite para se comprometer com o seu trabalho e aprimorar suas habilidades. Essa carta também pode indicar que é hora de reconhecer o progresso que fez e continuar a se esforçar em direção aos seus objetivos.
+            </span>
+        </li>
+        <li>
+            <img src="card56.png" alt="O 7 de Ouros"/>
+            <p class="item-text">O 7 de Ouros</p>
+            <span class="descricao">
+                O 7 de Ouros: Simboliza a paciência e a avaliação. Esta carta sugere que você deve parar e refletir sobre o que já conquistou. O 7 de Ouros representa a necessidade de considerar seus esforços e verificar se está no caminho certo. Quando aparece em uma leitura, é um convite para ter paciência e avaliar suas opções antes de seguir em frente. Essa carta também pode indicar que, mesmo que o progresso seja lento, o que você está construindo vale a pena.
+            </span>
+        </li>
+        <li>
+            <img src="card57.png" alt="O 6 de Ouros"/>
+            <p class="item-text">O 6 de Ouros</p>
+            <span class="descricao">
+                O 6 de Ouros: Representa a generosidade e o equilíbrio. Esta carta sugere que você deve estar aberto a dar e receber. O 6 de Ouros simboliza a reciprocidade e a partilha, indicando que você pode estar em um momento de abundância. Quando aparece em uma leitura, é um convite para se conectar com os outros e oferecer apoio, além de estar disposto a aceitar ajuda. Essa carta também pode indicar que é hora de usar seus recursos para ajudar os necessitados e criar um impacto positivo em sua comunidade.
+            </span>
+        </li>
+        <li>
+            <img src="card58.png" alt="O 5 de Ouros"/>
+            <p class="item-text">O 5 de Ouros</p>
+            <span class="descricao">
+                O 5 de Ouros: Simboliza a falta e a dificuldade. Esta carta sugere que você pode estar enfrentando desafios financeiros ou emocionais. O 5 de Ouros representa a necessidade de buscar apoio e reconhecer que não está sozinho. Quando aparece em uma leitura, é um convite para pedir ajuda e encontrar novas maneiras de lidar com suas dificuldades. Essa carta também pode indicar que, mesmo nas situações mais difíceis, há esperança de superação e crescimento.
+            </span>
+        </li>
+        <li>
+            <img src="card59.png" alt="O 4 de Ouros"/>
+            <p class="item-text">O 4 de Ouros</p>
+            <span class="descricao">
+                O 4 de Ouros: Representa a possessividade e a segurança. Esta carta sugere que você pode estar se apegando excessivamente ao que possui. O 4 de Ouros simboliza o medo da perda e a necessidade de controlar as situações, indicando que é hora de examinar sua relação com a segurança e a abundância. Quando aparece em uma leitura, é um convite para soltar e permitir que as coisas fluam. Essa carta também pode indicar que, mesmo em tempos de insegurança, a generosidade é a chave para a verdadeira abundância.
+            </span>
+        </li>
+        <li>
+            <img src="card60.png" alt="O 3 de Ouros"/>
+            <p class="item-text">O 3 de Ouros</p>
+            <span class="descricao">
+                O 3 de Ouros: Simboliza a colaboração e o trabalho em equipe. Esta carta sugere que você deve valorizar as contribuições dos outros e trabalhar em harmonia. O 3 de Ouros representa a construção e a criatividade, indicando que você pode estar em um momento de realização em projetos em grupo. Quando aparece em uma leitura, é um convite para reconhecer a importância da colaboração e celebrar os sucessos coletivos. Essa carta também pode indicar que é hora de buscar o apoio de outras pessoas em seus objetivos.
+            </span>
+        </li>
+        <li>
+            <img src="card61.png" alt="O 2 de Ouros"/>
+            <p class="item-text">O 2 de Ouros</p>
+            <span class="descricao">
+                O 2 de Ouros: Representa o equilíbrio e a adaptação. Esta carta sugere que você deve aprender a gerenciar suas prioridades e responsabilidades. O 2 de Ouros simboliza a flexibilidade e a capacidade de se ajustar às mudanças, indicando que você pode estar em um momento de transição. Quando aparece em uma leitura, é um convite para manter o equilíbrio em sua vida e estar disposto a fazer as adaptações necessárias. Essa carta também pode indicar que é hora de considerar diferentes opções antes de tomar decisões.
+            </span>
+        </li>
+        <li>
+            <img src="card62.png" alt="O Ás de Ouros"/>
+            <p class="item-text">O Ás de Ouros</p>
+            <span class="descricao">
+                O Ás de Ouros: Simboliza novas oportunidades financeiras e de realização. Esta carta sugere que você está prestes a receber um presente ou uma oportunidade significativa. O Ás de Ouros representa a prosperidade e o potencial, indicando que é um momento propício para novos começos em relação às finanças e ao trabalho. Quando aparece em uma leitura, é um convite para estar aberto às oportunidades e ser proativo em sua busca por sucesso. Essa carta também pode indicar que o trabalho árduo e a dedicação trarão recompensas.
+            </span>
+        </li>
+        <li>
+            <img src="card63.png" alt="O 5 de Paus"/>
+            <p class="item-text">O 5 de Paus</p>
+            <span class="descricao">
+                O 5 de Paus: Representa competição e conflito. Esta carta sugere que você pode estar enfrentando desafios e que a rivalidade é intensa. O 5 de Paus simboliza a necessidade de se adaptar e encontrar formas criativas de superar obstáculos. Quando aparece em uma leitura, é um convite para ver a competição como uma oportunidade de crescimento e aprendizado. Essa carta também pode indicar que é importante manter a mente aberta e cooperar com os outros, mesmo em tempos de tensão.
+            </span>
+        </li>
+        <li>
+            <img src="card64.png" alt="O 4 de Paus"/>
+            <p class="item-text">O 4 de Paus</p>
+            <span class="descricao">
+                O 4 de Paus: Simboliza a celebração e a harmonia. Esta carta sugere que você pode estar em um momento de felicidade e realização em sua vida. O 4 de Paus representa o lar e a comunidade, indicando que é hora de valorizar os relacionamentos e as conquistas. Quando aparece em uma leitura, é um convite para celebrar o que você conquistou e desfrutar de momentos de alegria. Essa carta também pode indicar que é um bom momento para se reunir com amigos e familiares.
+            </span>
+        </li>
+        <li>
+            <img src="card65.png" alt="O 3 de Paus"/>
+            <p class="item-text">O 3 de Paus</p>
+            <span class="descricao">
+                O 3 de Paus: Representa a exploração e a visão de futuro. Esta carta sugere que você deve olhar além do presente e se preparar para novas oportunidades. O 3 de Paus simboliza a expansão e o progresso, indicando que você está pronto para seguir em frente. Quando aparece em uma leitura, é um convite para ter coragem e explorar novos horizontes. Essa carta também pode indicar que você deve confiar em suas habilidades e estar aberto ao que está por vir.
+            </span>
+        </li>
+        <li>
+            <img src="card66.png" alt="O 2 de Paus"/>
+            <p class="item-text">O 2 de Paus</p>
+            <span class="descricao">
+                O 2 de Paus: Simboliza a contemplação e a tomada de decisões. Esta carta sugere que você pode estar em um ponto de virada e que é hora de planejar o futuro. O 2 de Paus representa a necessidade de olhar para suas opções e considerar qual caminho seguir. Quando aparece em uma leitura, é um convite para se conectar com seus objetivos e ter clareza sobre o que deseja alcançar. Essa carta também pode indicar que, mesmo nas incertezas, você tem o poder de moldar seu futuro.
+            </span>
+        </li>
+        <li>
+            <img src="card67.png" alt="O Ás de Paus"/>
+            <p class="item-text">O Ás de Paus</p>
+            <span class="descricao">
+                O Ás de Paus: Representa novos começos e criatividade. Esta carta sugere que você está prestes a embarcar em uma nova jornada ou projeto. O Ás de Paus simboliza a inspiração e a paixão, indicando que é um momento favorável para seguir seus sonhos. Quando aparece em uma leitura, é um convite para se deixar levar pela sua criatividade e aproveitar as oportunidades que surgem. Essa carta também pode indicar que a motivação e a energia estão em alta, impulsionando você a agir.
+            </span>
+        </li>
+        <li>
+            <img src="card68.png" alt="O Rei de Paus"/>
+            <p class="item-text">O Rei de Paus</p>
+            <span class="descricao">
+                O Rei de Paus: Simboliza liderança e visão. Esta carta sugere que você deve agir com confiança e inspiração. O Rei de Paus representa a capacidade de motivar e guiar os outros, indicando que você pode estar em um papel de liderança. Quando aparece em uma leitura, é um convite para usar sua criatividade e coragem para alcançar seus objetivos. Essa carta também pode indicar que você deve permanecer focado em suas paixões e compartilhar sua visão com os outros.
+            </span>
+        </li>
+        <li>
+            <img src="card69.png" alt="A Rainha de Paus"/>
+            <p class="item-text">A Rainha de Paus</p>
+            <span class="descricao">
+                A Rainha de Paus: Representa a intuição e a sensualidade. Esta carta sugere que você deve confiar em sua intuição e seguir sua paixão. A Rainha de Paus simboliza a energia criativa e o magnetismo pessoal, indicando que você pode estar em um momento de autoexpressão. Quando aparece em uma leitura, é um convite para abraçar sua natureza criativa e se permitir brilhar. Essa carta também pode indicar que você deve usar sua influência para inspirar os outros e promover a positividade.
+            </span>
+        </li>
+        <li>
+            <img src="card70.png" alt="O Valete de Paus"/>
+            <p class="item-text">O Valete de Paus</p>
+            <span class="descricao">
+                O Valete de Paus: Simboliza a aventura e a exploração. Esta carta sugere que você deve estar aberto a novas experiências e desafios. O Valete de Paus representa a energia juvenil e a curiosidade, indicando que você pode estar pronto para embarcar em uma nova jornada. Quando aparece em uma leitura, é um convite para se permitir explorar o desconhecido e abraçar a mudança. Essa carta também pode indicar que você deve ter coragem para seguir sua intuição e agir de acordo com seus instintos.
+            </span>
+        </li>
+        <li>
+            <img src="card71.png" alt="O 10 de Paus"/>
+            <p class="item-text">O 10 de Paus</p>
+            <span class="descricao">
+                O 10 de Paus: Representa a sobrecarga e o estresse. Esta carta sugere que você pode estar se sentindo sobrecarregado pelas responsabilidades. O 10 de Paus simboliza a necessidade de equilibrar suas obrigações e cuidar de si mesmo. Quando aparece em uma leitura, é um convite para avaliar suas prioridades e buscar apoio quando necessário. Essa carta também pode indicar que é hora de soltar o que não serve mais e focar no que realmente importa.
+            </span>
+        </li>
+        <li>
+            <img src="card72.png" alt="O 9 de Paus"/>
+            <p class="item-text">O 9 de Paus</p>
+            <span class="descricao">
+                O 9 de Paus: Simboliza a resiliência e a perseverança. Esta carta sugere que você deve continuar lutando, mesmo diante das adversidades. O 9 de Paus representa a força interior e a determinação, indicando que você está perto de alcançar seus objetivos. Quando aparece em uma leitura, é um convite para não desistir e acreditar em si mesmo. Essa carta também pode indicar que é importante aprender com os desafios e usar a experiência adquirida para crescer.
+            </span>
+        </li>
+        <li>
+            <img src="card73.png" alt="O 8 de Paus"/>
+            <p class="item-text">O 8 de Paus</p>
+            <span class="descricao">
+                O 8 de Paus: Representa movimento e ação rápida. Esta carta sugere que as coisas estão se movendo rapidamente em sua vida e que você deve estar preparado para agir. O 8 de Paus simboliza a comunicação e a velocidade, indicando que é um momento propício para tomar decisões e seguir em frente. Quando aparece em uma leitura, é um convite para abraçar a mudança e aproveitar as oportunidades que surgem. Essa carta também pode indicar que novas informações ou insights estão chegando.
+            </span>
+        </li>
+        <li>
+            <img src="card74.png" alt="O 7 de Paus"/>
+            <p class="item-text">O 7 de Paus</p>
+            <span class="descricao">
+                O 7 de Paus: Simboliza a defesa e a perseverança. Esta carta sugere que você deve se manter firme em suas convicções e lutar pelo que acredita. O 7 de Paus representa a necessidade de se proteger contra críticas e desafios, indicando que você deve ter coragem para se afirmar. Quando aparece em uma leitura, é um convite para defender seus valores e não se deixar abalar pelas opiniões dos outros. Essa carta também pode indicar que é hora de se preparar para enfrentar obstáculos.
+            </span>
+        </li>
+        <li>
+            <img src="card75.png" alt="O 6 de Paus"/>
+            <p class="item-text">O 6 de Paus</p>
+            <span class="descricao">
+                O 6 de Paus: Representa a vitória e o reconhecimento. Esta carta sugere que você pode estar prestes a alcançar um grande objetivo. O 6 de Paus simboliza o sucesso e a conquista, indicando que seus esforços estão prestes a ser recompensados. Quando aparece em uma leitura, é um convite para celebrar suas vitórias e reconhecer o apoio que recebeu. Essa carta também pode indicar que você deve compartilhar suas realizações com os outros e inspirá-los a seguir seus próprios caminhos.
+            </span>
+        </li>
+        <li>
+            <img src="card76.png" alt="O 5 de Copas"/>
+            <p class="item-text">O 5 de Copas</p>
+            <span class="descricao">
+                O 5 de Copas: Simboliza a perda e a tristeza. Esta carta sugere que você pode estar passando por um período de luto ou arrependimento. O 5 de Copas representa a necessidade de enfrentar suas emoções e permitir-se sentir a dor. Quando aparece em uma leitura, é um convite para reconhecer o que foi perdido, mas também para se lembrar das oportunidades que ainda estão disponíveis. Essa carta também pode indicar que é hora de deixar o passado para trás e se abrir para o que o futuro pode trazer.
+            </span>
+        </li>
+        <li>
+            <img src="card77.png" alt="O 4 de Copas"/>
+            <p class="item-text">O 4 de Copas</p>
+            <span class="descricao">
+                O 4 de Copas: Representa a apatia e a introspecção. Esta carta sugere que você pode estar se sentindo insatisfeito ou desinteressado nas situações ao seu redor. O 4 de Copas simboliza a necessidade de se reconectar com suas emoções e refletir sobre o que realmente deseja. Quando aparece em uma leitura, é um convite para considerar novas perspectivas e estar aberto a novas oportunidades. Essa carta também pode indicar que, mesmo quando se sente desanimado, há possibilidades esperando para serem descobertas.
+            </span>
+        </li>
+        <li>
+            <img src="card78.png" alt="O 3 de Copas"/>
+            <p class="item-text">O 3 de Copas</p>
+            <span class="descricao">
+                O 3 de Copas: Simboliza a celebração e a amizade. Esta carta sugere que você deve valorizar os relacionamentos e os momentos de alegria em sua vida. O 3 de Copas representa a comunhão e a harmonia, indicando que é hora de se reunir com amigos e familiares para celebrar. Quando aparece em uma leitura, é um convite para aproveitar as conexões sociais e se permitir desfrutar dos prazeres simples da vida. Essa carta também pode indicar que é um bom momento para expressar gratidão por aqueles que estão ao seu redor.
+            </span>
+        </li>
+    </ul>
+
+   
+    <script src="script.js"></script>
+
+</body>
+</html>
